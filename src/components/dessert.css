@@ -1,0 +1,134 @@
+/* Container holding the image and the text */
+*{
+  margin:0;
+  padding:0;
+}
+body {
+  font-family: sans-serif;
+}
+.container {
+    position: relative;
+    text-align: center;
+    color: white;
+  }
+  .container-custom{
+    max-width: 800px;
+  }
+  
+.container img {
+      width:100%;
+}
+.collapse:not(.show) {
+  display: block;
+  height: 3rem;
+  overflow: hidden;
+}
+
+.collapsing {
+  height: 3rem;
+}
+
+ a.collapsed::after {
+  content: '+ Show More';
+}
+
+ a:not(.collapsed)::after {
+  content: '- Show Less';
+}
+.price{
+    font-size: 16px;
+    background-color:  #cc00cc    ;
+    border-radius: 4px;
+    font-style: italic;
+    width: fit-content;
+    padding: 8px;
+    color:#fff;
+    float:none;
+  }
+  .name {
+    font-size: 25px;
+    text-align: initial;
+  }
+  .read_more{
+    text-align:initial;
+  }
+  /* Bottom left text */
+  .bottom-left {
+    position: absolute;
+    bottom: 8px;
+    left: 16px;
+    color:white
+  }
+  
+
+  .card {
+    margin-bottom: 1rem;
+    border: none;
+  }
+  .card-title.name{
+    color:  #cc00cc;
+    text-align: initial;
+    font-size: 16px;
+  }
+  .card .card-text {
+    color: gray;
+    text-align: initial;
+  }
+  
+  .list-view .row > [class*='col-'] {
+    max-width: 100%;
+    flex: 0 0 100%;
+  }
+  
+  .grid-container{
+    margin-top:15px;
+  }
+
+  .list-view .card {
+    flex-direction: row;
+  }
+  .card > .card-img-top {
+    width: auto;
+  }
+  .list-view .card-body {
+    display: inline-block;
+  }
+  @media (max-width: 575.98px) {
+  .card {
+    flex-direction: row;
+  }
+  .list-view .card {
+    flex-direction: column;
+  }
+  .container img {
+    width: 40% !important;
+    height: 200px;
+  }
+  .container-custom {
+    display: flex;
+  }
+  .bottom-left {
+    flex-direction: row;
+    position: static;
+    margin-left: 10px;
+
+  }
+  .card-body{
+    display: inline-block;
+  }
+  .price {
+    float: right;
+  }
+  .bottom-left .read_more {
+    color: rgb(128, 128, 128);
+  }
+  .name{
+    color:  #cc00cc;
+  }
+  }
+  
+  
+  
+
+
+  
