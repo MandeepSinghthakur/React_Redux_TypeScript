@@ -70,7 +70,7 @@ const DessertsList: React.FC = () => {
           <>
             <img className="top_image" src={dessert.imageUrl}></img>
             <div className="bottom-left">
-              <div className="price">${dessert.price}</div>
+              <div className="price">$ {dessert.price}</div>
               <div className="name">{dessert.name}</div>
               <div className="read_more"><ReadMore>{dessert.description}</ReadMore></div>
             </div>
