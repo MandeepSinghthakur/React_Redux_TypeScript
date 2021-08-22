@@ -3,6 +3,7 @@ import { Dessert } from '../dessert'
 
 export interface FetchDessert {
   type: ActionType.FETCH_DESSERTS;
+  payload:boolean;
 }
 
 export interface FetchDessertsCompleteAction {

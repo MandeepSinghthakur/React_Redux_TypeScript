@@ -5,9 +5,9 @@ import {
 } from '../actions';
 import { Dessert } from '../dessert';
 
-export const fetchDesserts = () => {
+export const fetchDesserts = (loader:boolean) => {
   return async (dispatch: Dispatch<Action>) => {
-    dispatch({ type: ActionType.FETCH_DESSERTS });
+    dispatch({ type: ActionType.FETCH_DESSERTS, payload:loader});
     try {
       const response = await fetch('desserts.json');
       const data: Dessert[] = await  response.json()

@@ -2,6 +2,7 @@
 import { Fragment, useEffect, useState } from 'react';
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
+import Spinner from 'react-bootstrap/Spinner'
 import Form from 'react-bootstrap/Form'
 import { useTypedSelector } from '../hooks/use-typed-selector';
 import { useActions } from '../hooks/use-actions';
@@ -11,6 +12,9 @@ import './dessert.css'
 
 
 const DessertsList: React.FC = () => {
+  const loading: Boolean = useTypedSelector(({ desserts: { loading } }) =>
+  loading
+);
   const desserts: Dessert[] = useTypedSelector(({ desserts: { data } }) =>
     data
   );
@@ -28,18 +32,18 @@ const DessertsList: React.FC = () => {
   const { fetchDesserts, addDessert } = useActions();
  
   useEffect(() => {
-    fetchDesserts();
-  }, [fetchDesserts]);
-  useEffect(() => {
     setDessert(firstItem)
     setDessertList(desserts)
-  }, [desserts, firstItem])
+  }, [desserts, firstItem]) 
 
+  const getDesserts = () => {
+    fetchDesserts(true);
+  }
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const handleAdd = () => {
     if (inputName === '' || inputPrice === '' || inputImage === '' || inputDescription === '') {
-      alert("Please Enter all the value")
+      alert("Please Enter all the values")
     } else {
       addDessert({
         name: inputName,
@@ -57,6 +61,10 @@ const DessertsList: React.FC = () => {
 
   return (
     <>
+      { loading && <Spinner animation="border" role="status">
+        <span className="visually-hidden">Loading...</span>
+      </Spinner>
+      }
       <div className="container container-custom">
         {dessert &&
           <>
@@ -89,11 +97,17 @@ const DessertsList: React.FC = () => {
           })}
         </div>
       </div>
-      <div className="container container-custom">
-        <Button variant="primary" onClick={handleShow}>
-          Add Desert
+      { desserts.length ==0 && <div className="container container-custom">
+      <Button variant="primary" onClick={getDesserts}>
+          Fetch Desserts
         </Button>
-      </div>
+      </div> 
+      }
+       { desserts.length > 0 && <div className="container container-custom">
+        <Button variant="primary" onClick={handleShow}>
+          Add Dessert
+        </Button>
+      </div> }
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Add Desert</Modal.Title>

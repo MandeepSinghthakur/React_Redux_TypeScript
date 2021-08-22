@@ -20,12 +20,13 @@ const initialState: DessertsState = {
 const reducer = produce((state: DessertsState = initialState, action: Action) => {
   switch (action.type) {
     case ActionType.FETCH_DESSERTS:
-      state.loading = true;
+      state.loading = action.payload;
       state.error = null;
       return state;
     case ActionType.FETCH_DESSERTS_COMPLETE:
       state.data = action.payload.slice(1)
       state.firstItem = action.payload[0]
+      state.loading = false;
       return state;
     case ActionType.FETCH_DESSERTS_ERROR:
       state.loading = false;
