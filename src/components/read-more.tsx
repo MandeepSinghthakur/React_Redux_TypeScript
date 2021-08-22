@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import './read-more.css'
 
-const ReadMore = ({ children }) => {
+const ReadMore: React.FC<{}> = ({ children }) => {
   const text = children;
   const [isReadMore, setIsReadMore] = useState(true);
   const toggleReadMore = () => {
